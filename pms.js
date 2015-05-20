@@ -40,6 +40,7 @@ if (Meteor.isClient) {
       var text = event.target.text.value;
       var id = new Meteor.Collection.ObjectID(event.target.project_id.value);
       Goals.insert({parentId: id, text: text, createdAt: new Date()})
+      Projects.update({id: id}, {})
       event.target.text.value= "";
       return false;
     }
