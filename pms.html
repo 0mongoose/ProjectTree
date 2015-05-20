@@ -1,0 +1,28 @@
+<head>
+  <title>pms</title>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+
+<body>
+<header>
+  <h1>Welcome to Meteor!</h1>
+   <form class="new-project">
+ 	<input type="text" name="name" placeholder="Add project">
+   </form>
+</header>   
+<ul>
+ {{#each projects}}
+  {{> project}}
+ {{/each}}
+ </ul>
+</body>
+
+<template name="project">
+<li>{{name}} 
+	{{genTree}}
+ <form class="new-goal">
+ 	<input type="hidden" name="project_id" value={{ _id._str }}>
+ 	<input type="text" name="text" placeholder="Add goal">
+ </form>
+<div class="chart"></div></li>
+</template>
