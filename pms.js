@@ -38,8 +38,9 @@ if (Meteor.isClient) {
   Template.project.events({
     "submit .new-goal": function(event){
       var text = event.target.text.value;
-      var id = new Meteor.Collection.ObjectID(event.target.project_id.value);
-      Goals.insert({parentId: id, text: text, createdAt: new Date()})
+      var projectId = new Meteor.Collection.ObjectID(event.target.project_id.value);
+      var newId = new Meteor.Collection.ObjectId()._str;
+      Goals.insert({_id: newId, parentId: id, text: text, createdAt: new Date()})
       Projects.update({id: id}, {})
       event.target.text.value= "";
       return false;
